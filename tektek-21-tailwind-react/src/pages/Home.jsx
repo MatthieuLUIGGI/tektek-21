@@ -2,50 +2,17 @@ import { Link } from 'react-router-dom';
 import HeroSection from '../components/common/HeroSection';
 import DonationCard from '../components/common/DonationCard';
 import Button from '../components/ui/Button';
+import { homeStats } from '../data/stats';
+import { recentDonations } from '../data/donations';
 
 export default function Home() {
-  const stats = [
-    { value: '1,247', label: 'Appareils reconditionnés' },
-    { value: '89', label: 'Associations partenaires' },
-    { value: '3,456', label: 'Donateurs actifs' }
-  ];
-
-  const donations = [
-    {
-      title: 'Ordinateur portable',
-      image: 'https://via.placeholder.com/400x250/10b981/FFFFFF?text=Ordinateur',
-      donor: 'JeanDupont92',
-      donorInitial: 'J',
-      avatarGradient: 'green',
-      association: 'Les Restos du Cœur',
-      badgeColor: 'green'
-    },
-    {
-      title: 'Smartphone Android',
-      image: 'https://via.placeholder.com/400x250/059669/FFFFFF?text=Smartphone',
-      donor: 'MarieL',
-      donorInitial: 'M',
-      avatarGradient: 'purple',
-      association: 'Emmaüs France',
-      badgeColor: 'emerald'
-    },
-    {
-      title: 'Tablette iPad',
-      image: 'https://via.placeholder.com/400x250/047857/FFFFFF?text=Tablette',
-      donor: 'PaulTech',
-      donorInitial: 'P',
-      avatarGradient: 'blue',
-      association: 'Secours Populaire',
-      badgeColor: 'teal'
-    }
-  ];
 
   return (
     <>
       <HeroSection
         title="Donnez une seconde vie à vos appareils"
         description="Vos appareils sont reconditionnés puis remis aux associations de votre choix. Un geste solidaire et écologique soutenu par les pouvoirs publics."
-        stats={stats}
+        stats={homeStats}
       />
 
       <main className="container mx-auto px-6 py-16">
@@ -57,7 +24,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {donations.map((donation, index) => (
+          {recentDonations.map((donation, index) => (
             <DonationCard key={index} {...donation} />
           ))}
         </div>
