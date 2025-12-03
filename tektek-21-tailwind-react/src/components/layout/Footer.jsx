@@ -46,7 +46,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/donner" className="text-gray-400 hover:text-green-400 transition-colors duration-200">
+                <Link to="/tous-les-dons" className="text-gray-400 hover:text-green-400 transition-colors duration-200">
                   Tous les dons
                 </Link>
               </li>

@@ -5,38 +5,10 @@ import StepCard from '../components/common/StepCard';
 import TestimonialCard from '../components/common/TestimonialCard';
 import Button from '../components/ui/Button';
 import Avatar from '../components/ui/Avatar';
+import { impactStats } from '../data/stats';
+import { testimonials } from '../data/testimonials';
 
 export default function Presentation() {
-  const impactStats = [
-    { value: '1,247', label: 'Appareils reconditionnés' },
-    { value: '89', label: 'Organisations caritatives' },
-    { value: '3,456', label: 'Donateurs actifs' },
-    { value: '98%', label: 'Taux de reconditionnement' }
-  ];
-
-  const testimonials = [
-    {
-      testimonial: 'Une plateforme simple et efficace. J\'ai donné mon ancien ordinateur qui a été reconditionné et remis à l\'association de mon choix. Le suivi est transparent !',
-      name: 'Sophie Martin',
-      role: 'Donatrice depuis 2023',
-      avatarLetter: 'S',
-      avatarGradient: 'green'
-    },
-    {
-      testimonial: 'En tant qu\'association, nous recevons du matériel reconditionné de qualité grâce à TekTek-21. Les appareils sont comme neufs et très utiles pour nos bénéficiaires.',
-      name: 'Pierre Durand',
-      role: 'Responsable Emmaüs France',
-      avatarLetter: 'P',
-      avatarGradient: 'blue'
-    },
-    {
-      testimonial: 'Excellente initiative ! J\'ai donné 3 smartphones et 2 tablettes. Savoir qu\'ils seront reconditionnés et redistribués me rend fière de mon geste.',
-      name: 'Laura Benoit',
-      role: 'Donatrice depuis 2024',
-      avatarLetter: 'L',
-      avatarGradient: 'purple'
-    }
-  ];
 
   return (
     <>
@@ -223,12 +195,12 @@ export default function Presentation() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
               <Link to="/donner">
-                <Button variant="outline" className="bg-green text-green-600 hover:bg-white hover:text-green-700 px-8 py-4 text-lg font-bold">
+                <Button className="bg-white text-green-600 hover:bg-green-50 px-8 py-4 text-lg font-bold">
                   Faire un don maintenant
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button variant="outline" className="px-8 py-4 text-lg font-bold">
+                <Button className="bg-emerald-500 text-white hover:bg-emerald-600 px-8 py-4 text-lg font-bold">
                   En savoir plus
                 </Button>
               </Link>

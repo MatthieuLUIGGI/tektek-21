@@ -1,8 +1,81 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import StepCard from '../components/common/StepCard';
 import Button from '../components/ui/Button';
 
 export default function Donner() {
+  const navigate = useNavigate();
+  const [prenom, setPrenom] = useState("");
+  const [nom, setNom] = useState("");
+  const [email, setEmail] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [typeAppareil, setTypeAppareil] = useState("");
+  const [marque, setMarque] = useState("");
+  const [modele, setModele] = useState("");
+  const [etatAppareil, setEtatAppareil] = useState("");
+  const [description, setDescription] = useState("");
+  const [association, setAssociation] = useState("");
+  const [accepteConditions, setAccepteConditions] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!prenom.trim()) {
+      alert("Le prénom est requis");
+      return;
+    }
+
+    if (!nom.trim()) {
+      alert("Le nom est requis");
+      return;
+    }
+
+    if (!email.trim()) {
+      alert("L'email est requis");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("L'email n'est pas valide");
+      return;
+    }
+
+    if (!typeAppareil || typeAppareil === "Sélectionnez un type") {
+      alert("Le type d'appareil est requis");
+      return;
+    }
+
+    if (!etatAppareil || etatAppareil === "Sélectionnez l'état") {
+      alert("L'état de l'appareil est requis");
+      return;
+    }
+
+    if (!association) {
+      alert("Veuillez sélectionner une association bénéficiaire");
+      return;
+    }
+
+    if (!accepteConditions) {
+      alert("Vous devez accepter les conditions générales d'utilisation");
+      return;
+    }
+
+    console.log("Prénom:", prenom);
+    console.log("Nom:", nom);
+    console.log("Email:", email);
+    console.log("Téléphone:", telephone);
+    console.log("Type d'appareil:", typeAppareil);
+    console.log("Marque:", marque);
+    console.log("Modèle:", modele);
+    console.log("État:", etatAppareil);
+    console.log("Description:", description);
+    console.log("Association:", association);
+
+    alert("Votre don a été enregistré avec succès !");
+    navigate("/");
+  };
+
   return (
     <>
       <section className="gradient-bg text-white py-20 relative overflow-hidden">
@@ -32,26 +105,50 @@ export default function Donner() {
                 <p className="text-gray-600">Remplissez le formulaire ci-dessous pour faire don de votre appareil</p>
               </div>
 
-              <form className="space-y-8">
+              <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2">Prénom *</label>
-                    <input type="text" placeholder="Jean" className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200" />
+                    <input
+                      type="text"
+                      placeholder="Jean"
+                      value={prenom}
+                      onChange={(e) => setPrenom(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200"
+                    />
                   </div>
                   <div>
                     <label className="block text-gray-700 font-semibold mb-2">Nom *</label>
-                    <input type="text" placeholder="Dupont" className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200" />
+                    <input
+                      type="text"
+                      placeholder="Dupont"
+                      value={nom}
+                      onChange={(e) => setNom(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200"
+                    />
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">Email *</label>
-                  <input type="email" placeholder="jean.dupont@example.com" className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200" />
+                  <input
+                    type="email"
+                    placeholder="jean.dupont@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200"
+                  />
                 </div>
 
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">Téléphone</label>
-                  <input type="tel" placeholder="06 12 34 56 78" className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200" />
+                  <input
+                    type="tel"
+                    placeholder="06 12 34 56 78"
+                    value={telephone}
+                    onChange={(e) => setTelephone(e.target.value)}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200"
+                  />
                 </div>
 
                 <div className="border-t pt-8">
@@ -60,7 +157,11 @@ export default function Donner() {
                   <div className="space-y-6">
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2">Type d'appareil *</label>
-                      <select className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200">
+                      <select
+                        value={typeAppareil}
+                        onChange={(e) => setTypeAppareil(e.target.value)}
+                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200"
+                      >
                         <option>Sélectionnez un type</option>
                         <option>Ordinateur portable</option>
                         <option>Ordinateur fixe</option>
@@ -75,17 +176,33 @@ export default function Donner() {
 
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2">Marque</label>
-                      <input type="text" placeholder="Apple, Samsung, HP..." className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200" />
+                      <input
+                        type="text"
+                        placeholder="Apple, Samsung, HP..."
+                        value={marque}
+                        onChange={(e) => setMarque(e.target.value)}
+                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200"
+                      />
                     </div>
 
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2">Modèle</label>
-                      <input type="text" placeholder="iPhone 12, MacBook Pro..." className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200" />
+                      <input
+                        type="text"
+                        placeholder="iPhone 12, MacBook Pro..."
+                        value={modele}
+                        onChange={(e) => setModele(e.target.value)}
+                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200"
+                      />
                     </div>
 
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2">État de l'appareil *</label>
-                      <select className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200">
+                      <select
+                        value={etatAppareil}
+                        onChange={(e) => setEtatAppareil(e.target.value)}
+                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200"
+                      >
                         <option>Sélectionnez l'état</option>
                         <option>Comme neuf</option>
                         <option>Très bon état</option>
@@ -97,7 +214,13 @@ export default function Donner() {
 
                     <div>
                       <label className="block text-gray-700 font-semibold mb-2">Description</label>
-                      <textarea rows="4" placeholder="Décrivez votre appareil, ses caractéristiques, son état..." className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200 resize-none"></textarea>
+                      <textarea
+                        rows="4"
+                        placeholder="Décrivez votre appareil, ses caractéristiques, son état..."
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-green-500 focus:outline-none transition-colors duration-200 resize-none"
+                      ></textarea>
                     </div>
 
                     <div>
@@ -118,7 +241,14 @@ export default function Donner() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <label className="relative cursor-pointer">
-                      <input type="radio" name="association" className="peer sr-only" />
+                      <input
+                        type="radio"
+                        name="association"
+                        value="Les Restos du Cœur"
+                        checked={association === "Les Restos du Cœur"}
+                        onChange={(e) => setAssociation(e.target.value)}
+                        className="peer sr-only"
+                      />
                       <div className="p-4 rounded-xl border-2 border-gray-200 peer-checked:border-green-500 peer-checked:bg-green-50 transition-all duration-200 hover:shadow-md">
                         <div className="flex items-center space-x-3">
                           <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
@@ -133,7 +263,14 @@ export default function Donner() {
                     </label>
 
                     <label className="relative cursor-pointer">
-                      <input type="radio" name="association" className="peer sr-only" />
+                      <input
+                        type="radio"
+                        name="association"
+                        value="Emmaüs France"
+                        checked={association === "Emmaüs France"}
+                        onChange={(e) => setAssociation(e.target.value)}
+                        className="peer sr-only"
+                      />
                       <div className="p-4 rounded-xl border-2 border-gray-200 peer-checked:border-green-500 peer-checked:bg-green-50 transition-all duration-200 hover:shadow-md">
                         <div className="flex items-center space-x-3">
                           <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
@@ -148,7 +285,14 @@ export default function Donner() {
                     </label>
 
                     <label className="relative cursor-pointer">
-                      <input type="radio" name="association" className="peer sr-only" />
+                      <input
+                        type="radio"
+                        name="association"
+                        value="Secours Populaire"
+                        checked={association === "Secours Populaire"}
+                        onChange={(e) => setAssociation(e.target.value)}
+                        className="peer sr-only"
+                      />
                       <div className="p-4 rounded-xl border-2 border-gray-200 peer-checked:border-green-500 peer-checked:bg-green-50 transition-all duration-200 hover:shadow-md">
                         <div className="flex items-center space-x-3">
                           <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
@@ -163,7 +307,14 @@ export default function Donner() {
                     </label>
 
                     <label className="relative cursor-pointer">
-                      <input type="radio" name="association" className="peer sr-only" />
+                      <input
+                        type="radio"
+                        name="association"
+                        value="Croix-Rouge Française"
+                        checked={association === "Croix-Rouge Française"}
+                        onChange={(e) => setAssociation(e.target.value)}
+                        className="peer sr-only"
+                      />
                       <div className="p-4 rounded-xl border-2 border-gray-200 peer-checked:border-green-500 peer-checked:bg-green-50 transition-all duration-200 hover:shadow-md">
                         <div className="flex items-center space-x-3">
                           <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
@@ -178,7 +329,14 @@ export default function Donner() {
                     </label>
 
                     <label className="relative cursor-pointer md:col-span-2">
-                      <input type="radio" name="association" className="peer sr-only" />
+                      <input
+                        type="radio"
+                        name="association"
+                        value="Autres associations"
+                        checked={association === "Autres associations"}
+                        onChange={(e) => setAssociation(e.target.value)}
+                        className="peer sr-only"
+                      />
                       <div className="p-4 rounded-xl border-2 border-gray-200 peer-checked:border-green-500 peer-checked:bg-green-50 transition-all duration-200 hover:shadow-md">
                         <div className="flex items-center justify-center space-x-3">
                           <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -192,7 +350,13 @@ export default function Donner() {
                 </div>
 
                 <div className="flex items-start space-x-3 pt-6">
-                  <input type="checkbox" id="terms" className="mt-1 w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500" />
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    checked={accepteConditions}
+                    onChange={(e) => setAccepteConditions(e.target.checked)}
+                    className="mt-1 w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                  />
                   <label htmlFor="terms" className="text-gray-600 text-sm">
                     J'accepte les <a href="#" className="text-green-600 hover:text-green-700 font-semibold">conditions générales d'utilisation</a> et je certifie que les informations fournies sont exactes.
                   </label>

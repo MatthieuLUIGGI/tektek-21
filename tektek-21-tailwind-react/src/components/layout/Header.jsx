@@ -20,8 +20,8 @@ export default function Header() {
             <Link to="/collaborateurs" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200">
               Collaborateurs
             </Link>
-            <Link to="/donner" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200">
-              Donner
+            <Link to="/tous-les-dons" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200">
+              Tous les dons
             </Link>
             <Link to="/contact" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200">
               Contact
@@ -32,11 +32,13 @@ export default function Header() {
             <Link to="/donner">
               <Button>Faire un don</Button>
             </Link>
-            <button className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors duration-200">
-              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </button>
+            <Link to="/login">
+              <button className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors duration-200">
+                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </button>
+            </Link>
           </div>
         </div>
       </nav>
