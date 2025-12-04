@@ -348,24 +348,7 @@ export default function Donner() {
                     </label>
                   </div>
                 </div>
-
-                <div className="flex items-start space-x-3 pt-6">
-                  <input
-                    type="checkbox"
-                    id="terms"
-                    checked={accepteConditions}
-                    onChange={(e) => setAccepteConditions(e.target.checked)}
-                    className="mt-1 w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500"
-                  />
-                  <label htmlFor="terms" className="text-gray-600 text-sm">
-                    J'accepte les <a href="#" className="text-green-600 hover:text-green-700 font-semibold">conditions générales d'utilisation</a> et je certifie que les informations fournies sont exactes.
-                  </label>
-                </div>
-
                 <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 sm:space-x-4 pt-6">
-                  <Link to="/" className="text-gray-600 hover:text-gray-800 font-medium transition-colors duration-200">
-                    ← Retour à l'accueil
-                  </Link>
                   <button type="submit" className="gradient-bg text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-200">
                     Valider mon don
                   </button>
