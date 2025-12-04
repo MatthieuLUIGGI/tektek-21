@@ -7,6 +7,7 @@ import TousLesDons from '../pages/TousLesDons';
 import Contact from '../pages/Contact';
 import Signup from '../pages/Signup';
 import Login from '../pages/Login';
+import MiniPersist from '../pages/MiniPersist';
 
 export const routes = [
   {
@@ -44,6 +45,10 @@ export const routes = [
       {
         path: 'login',
         element: <Login />
+      },
+      {
+        path: 'mini-persist',
+        element: <MiniPersist />
       }
     ]
   }
