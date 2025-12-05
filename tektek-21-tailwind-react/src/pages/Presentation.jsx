@@ -13,6 +13,18 @@ export default function Presentation() {
   return (
     <>
       <section className="gradient-bg text-white py-20 relative overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-60"
+        >
+          <source src="/background-video.mp4" type="video/mp4" />
+        </video>
+
+        <div className="absolute inset-0 bg-gradient-to-br from-green-600/50 to-emerald-600/50"></div>
+
         <div className="absolute inset-0 opacity-10">
           <svg className="absolute top-0 left-0 w-64 h-64" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <path fill="currentColor" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,73.1,42.8C64.8,56.4,53.8,69,39.8,76.8C25.8,84.6,8.8,87.6,-7.3,86.1C-23.4,84.6,-38.8,78.6,-52.4,69.8C-66,61,-77.8,49.4,-84.3,35.1C-90.8,20.8,-92,3.8,-88.7,-11.9C-85.4,-27.6,-77.6,-41.9,-66.8,-53.4C-56,-64.9,-42.2,-73.6,-27.4,-80.3C-12.6,-87,-6.3,-91.7,1.8,-94.8C9.9,-97.9,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
@@ -58,7 +70,7 @@ export default function Presentation() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-green-400 to-emerald-600 rounded-3xl opacity-20 blur-2xl"></div>
               <img
-                src="https://via.placeholder.com/600x400/10b981/FFFFFF?text=Solidarity"
+                src="/presentation.png"
                 alt="Solidarité numérique"
                 className="relative rounded-2xl shadow-2xl w-full"
               />
